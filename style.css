@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: 1rem Poppins;
+}
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(90deg, #6096b4, red) ;
+    background-position: center;
+    padding: 5px  0 5px 0;
+}
+.shopping-list {
+    background-color: #eee9da;
+    box-shadow: 0px 0px 20px #aa5656;
+    padding: 10px;
+}
+#shopping-items {
+    padding: 10px;
+    border: 2px solid #93bfcf;
+    max-width: 80%;   
+}
+#add-btn:hover, #del-all:hover {
+    background-color:  #3b5761;
+    color: #fff;
+    transition:  all 0.3s ease-in-out;
+}
+.del-btn:hover, .ed-btn:hover {background-color:  #d3d9db;}
+#add-btn, #del-all, .del-btn, .ed-btn {
+    background-color: #93bfcf;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 10px;
+    box-shadow: 1px 2px 3px #3e54ac;
+    margin: 2px 10px 2px 10px;
+}
+#add-btn, #del-all {border-radius:  10px;}
+.list-head {
+    display: flex;
+    justify-content: space-between;
+}
+h1 {
+    text-align: center;
+    font-weight: 700;
+    margin: 0;
+}
+h3, #username {font-weight: 500; color: #000; margin: 0px 0 5px 0;}
+form {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #db9c9c;
+    border-radius: 10px;
+    max-width: 100%;
+}
+form  div {
+    display: flex;
+    gap: 1rem;
+}
+::placeholder {
+    color: #aa5656;
+}
+input[type="text"] {
+    background: none;
+    outline: none;
+    appearance: none;
+    border:  none;
+    width:  70%;
+}
+input[type="checkbox"] {
+    width: 20px;
+}
+input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color:  red;
+}
+
+@media screen and (max-width: 500px) {
+    #shopping-list  {   
+        max-width: 100%;
+    }
+    #add-btn, #del-all, .del-btn, .ed-btn {margin:  0 5px;}
+}
+@media screen and (min-width: 768px) {
+    * {font-size:  1.2rem;}
+}
