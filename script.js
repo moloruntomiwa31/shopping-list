@@ -38,7 +38,8 @@ delAll.addEventListener("click", function() {
 
 edBtn.addEventListener("click", e => {
     e.preventDefault()
-    const input = content.querySelector("label")
+    const input = content.querySelector(".item")
+    input.setAttribute("readonly", false)
     input.focus()
     input.addEventListener("blur", e => {
         input.innerHTML = e.target.value
@@ -47,11 +48,12 @@ edBtn.addEventListener("click", e => {
     })
 })
 
+{/* <label>${tasks[i]}</label> */}
 function display() {
     let listitems = '';
     for (let i=0; i<tasks.length; i++) {
         listitems += `<div class="list-items">
-        <input type="checkbox"> <label>${tasks[i]}</label>
+        <input type="checkbox"><input type="text" value="${tasks[i]} " readonly class="item">
         <button class="edit">Edit</button>
         </div>`
     }
