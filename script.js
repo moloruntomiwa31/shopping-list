@@ -10,6 +10,7 @@ let nameInput = document.getElementById("username");
 const username = localStorage.getItem("username");
 nameInput.value = username;
 nameInput.addEventListener("change", e => {
+    nameInput.setAttribute("readonly", true)
     localStorage.setItem("username", e.target.value)
 })
 
