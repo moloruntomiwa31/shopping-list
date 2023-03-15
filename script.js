@@ -1,12 +1,18 @@
 let inputEl = document.getElementById("shopping-items");
 const addBtn = document.getElementById("add-btn");
-const formEl = document.getElementById("form-el");
-let delBtn = document.querySelector(".del-btn");
-let edBtn = document.querySelector(".ed-btn");
+const formEl = document.getElementById("form-el");  
 const delAll = document.getElementById("del-all");
-const formIn = document.getElementById("form-el").getElementsByTagName("input");
+const edBtn = document.getElementsByClassName("edit");
+const content = document.querySelector(".list-items")
 let tasks = [];
-let userName = document.getElementById("username");
+
+let nameInput = document.getElementById("username");
+const username = localStorage.getItem("username");
+nameInput.value = username;
+nameInput.addEventListener("change", e => {
+    localStorage.setItem("username", e.target.value)
+})
+
 
 const taskStorage = JSON.parse(localStorage.getItem("tasks"));
 if (taskStorage) {
@@ -15,7 +21,7 @@ if (taskStorage) {
 }
 
 addBtn.addEventListener("click", function(e) {
-    if (inputEl.value != '') {
+    if (inputEl.value != "") {
         e.preventDefault();
         tasks.push(inputEl.value);
         inputEl.value = '';
@@ -29,25 +35,24 @@ delAll.addEventListener("click", function() {
     localStorage.clear()
 })
 
-edBtn.addEventListener("click",  function(e) {
-    e.preventDefault();
-    document.querySelector(".keep").focus()
-    
-})
-
-delBtn.addEventListener("click", function() {
-    formEl.innerHTML = ''
+edBtn.addEventListener("click", e => {
+    e.preventDefault()
+    const input = content.querySelector("label")
+    input.focus()
+    input.addEventListener("blur", e => {
+        input.innerHTML = e.target.value
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+        display()
+    })
 })
 
 function display() {
     let listitems = '';
     for (let i=0; i<tasks.length; i++) {
-        // listitems += ` 
-        // <div><input type="text" value="${tasks[i]}" class="keep">
-        // <button class="del-btn"><img src="delete.png" width="10px"></button>
-        // <button class="ed-btn"><img src="pen.png" width="10px"></button></div>
-        // `
-        listitems += `<div><input type="checkbox"> <label>${tasks[i]}</label></div>`
+        listitems += `<div class="list-items">
+        <input type="checkbox"> <label>${tasks[i]}</label>
+        <button class="edit">Edit</button>
+        </div>`
     }
     formEl.innerHTML = listitems;
 }
