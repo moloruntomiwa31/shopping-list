@@ -4,6 +4,7 @@ const formEl = document.getElementById("form-el");
 const delAll = document.getElementById("del-all");
 const edBtn = document.getElementsByClassName("edit");
 const content = document.querySelector(".list-items")
+const err = document.getElementById("error");
 let tasks = [];
 
 let nameInput = document.getElementById("username");
@@ -21,13 +22,16 @@ if (taskStorage) {
     display();
 }
 
-addBtn.addEventListener("click", function(e) {
-    if (inputEl.value != "") {
-        e.preventDefault();
+addBtn.addEventListener("click", function() {
+    if (inputEl.value !== "") {
+        err.style.display = "none"
         tasks.push(inputEl.value);
         inputEl.value = '';
         display();
         localStorage.setItem("tasks", JSON.stringify(tasks));
+    } else {
+        err.style.display = "block"
+        err.innerText = "Cannot be left blank."
     }
 })
 delAll.addEventListener("click", function() {
@@ -36,15 +40,15 @@ delAll.addEventListener("click", function() {
     localStorage.clear()
 })
 
-edBtn.addEventListener("click", e => {
+edBtn.addEventListener("click", (e) => {
     e.preventDefault()
-    const input = content.querySelector(".item")
-    input.setAttribute("readonly", false)
+    const input = document.querySelector(".item")
     input.focus()
+    input.removeAttribute("readonly")
     input.addEventListener("blur", e => {
-        input.innerHTML = e.target.value
-        localStorage.setItem("tasks", JSON.stringify(tasks))
-        display()
+        input.innerHTML = e.target.value;
+        display();
+        localStorage.setItem("tasks", input.innerHTML);
     })
 })
 

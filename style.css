@@ -83,6 +83,11 @@ input[type="checkbox"]:checked + input {
     text-decoration: line-through;
     color:  red;
 }
+#error {
+    font-size: 1rem;
+    font-style: italic;
+    color: red;
+}
 .list-items {
     display: flex;
     flex: 1 1 0%;
