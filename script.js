@@ -3,7 +3,7 @@ const addBtn = document.getElementById("add-btn");
 const formEl = document.getElementById("form-el");  
 const delAll = document.getElementById("del-all");
 const edBtn = document.getElementsByClassName("edit");
-const content = document.querySelector(".list-items")
+const content = document.getElementsByClassName("list-items")
 const err = document.getElementById("error");
 let tasks = [];
 
@@ -40,17 +40,17 @@ delAll.addEventListener("click", function() {
     localStorage.clear()
 })
 
-edBtn.addEventListener("click", (e) => {
-    e.preventDefault()
-    const input = document.querySelector(".item")
-    input.focus()
-    input.removeAttribute("readonly")
-    input.addEventListener("blur", e => {
-        input.innerHTML = e.target.value;
-        display();
-        localStorage.setItem("tasks", input.innerHTML);
-    })
-})
+// edBtn.addEventListener("click", function(e) {
+//     e.preventDefault()
+//     const input = content.querySelector("input[type='text']")
+//     input.removeAttribute("readonly")
+//     input.focus()
+//     input.addEventListener("blur", function(e) {
+//         input.innerText = e.target.value;
+//         display();
+//         localStorage.setItem("tasks", input.innerText);
+//     })
+// })
 
 {/* <label>${tasks[i]}</label> */}
 function display() {
@@ -58,9 +58,9 @@ function display() {
     for (let i=0; i<tasks.length; i++) {
         listitems += `<div class="list-items">
         <input type="checkbox"><input type="text" value="${tasks[i]} " readonly class="item">
-        <button class="edit">Edit</button>
         </div>`
     }
+            // <button class="edit" type='submit'>Edit</button>
     formEl.innerHTML = listitems;
 }
   

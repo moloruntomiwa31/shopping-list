@@ -53,7 +53,7 @@ h1 {
     font-weight: 900;
     margin: 0;
 }
-h3, #username {font-weight: 100; color: #000; margin: 0px 0 5px 0; text-shadow: 1px 1px 1px #000;}
+h3, #username {font-weight: 100; color: #303030; margin: 0px 0 5px 0;}
 h3 input {max-width: fit-content;}
 form {
     margin: 10px 0;
@@ -90,10 +90,10 @@ input[type="checkbox"]:checked + input {
 }
 .list-items {
     display: flex;
-    flex: 1 1 0%;
+    flex: 1 1;
     justify-content: space-between;
 }
-.edit {
+/* .edit {
     border: 0;
     padding: 2px;
     background-color: #5d7c88;
@@ -101,7 +101,7 @@ input[type="checkbox"]:checked + input {
     color: #fff;
     border-radius: 3px;
     cursor: pointer;
-}
+} */
 
 @media screen and (max-width: 500px) {
     #shopping-list  {   
