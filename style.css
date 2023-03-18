@@ -25,13 +25,13 @@
     border: 2px solid #93bfcf;
     max-width: 80%;   
 }
-#add-btn:hover, #del-all:hover {
+#add-btn:hover, #del-all:hover, #sel-all:hover, #dsel-all:hover {
     background-color:  #3b5761;
     color: #fff;
     transition:  all 0.3s ease-in-out;
 }
 .del-btn:hover, .ed-btn:hover {background-color:  #d3d9db;}
-#add-btn, #del-all, .del-btn, .ed-btn {
+#add-btn, #del-all, .del-btn, .ed-btn, #sel-all, #dsel-all {
     background-color: #93bfcf;
     color: #000;
     font-weight: 500;
@@ -41,9 +41,9 @@
     width: fit-content;
     padding: 10px;
     box-shadow: 1px 2px 3px #3e54ac;
-    margin: 2px 10px 2px 10px;
+    margin: 2px 5px 2px 5px;
 }
-#add-btn, #del-all {border-radius:  10px;}
+#add-btn, #del-all, #sel-all, #dsel-all {border-radius:  10px;}
 .list-head {
     display: flex;
     justify-content: space-between;
@@ -92,6 +92,7 @@ input[type="checkbox"]:checked + input {
     display: flex;
     flex: 1 1;
     justify-content: space-between;
+    margin: 2px 0;
 }
 /* .edit {
     border: 0;

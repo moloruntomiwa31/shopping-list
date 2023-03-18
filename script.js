@@ -2,9 +2,12 @@ let inputEl = document.getElementById("shopping-items");
 const addBtn = document.getElementById("add-btn");
 const formEl = document.getElementById("form-el");  
 const delAll = document.getElementById("del-all");
+const selAll = document.getElementById("sel-all");
+const dselAll = document.getElementById("dsel-all");
 const edBtn = document.getElementsByClassName("edit");
 const content = document.getElementsByClassName("list-items")
 const err = document.getElementById("error");
+const itemNum = document.getElementById("items-num");
 let tasks = [];
 
 let nameInput = document.getElementById("username");
@@ -15,6 +18,9 @@ nameInput.addEventListener("change", e => {
     localStorage.setItem("username", e.target.value)
 })
 
+let numOfItems = 0;
+// const number = localStorage.getItem("numofItems")
+itemNum.innerText = `Items : ${numOfItems}`
 
 const taskStorage = JSON.parse(localStorage.getItem("tasks"));
 if (taskStorage) {
@@ -24,6 +30,9 @@ if (taskStorage) {
 
 addBtn.addEventListener("click", function() {
     if (inputEl.value !== "") {
+        numOfItems++;
+        // localStorage.setItem("numofItems", numOfItems)
+        itemNum.innerText = `Items : ${numOfItems}`
         err.style.display = "none"
         tasks.push(inputEl.value);
         inputEl.value = '';
@@ -35,10 +44,31 @@ addBtn.addEventListener("click", function() {
     }
 })
 delAll.addEventListener("click", function() {
+    numOfItems = 0;
+    itemNum.innerText = `Items : ${numOfItems}`
+    // localStorage.setItem("numofItems", numOfItems)
     tasks = [];
     formEl.innerHTML = '';
     localStorage.clear()
 })
+selAll.addEventListener("click", () => {
+    const inputC  = document.getElementsByTagName("input");
+    for (i=0; i<inputC.length; i++) {
+        if (inputC[i].type == "checkbox") {
+            if (inputC[i].name != "check") {
+                inputC[i].checked = true;
+            }
+        }
+    }
+} )
+// dselAll.addEventListener("click", () => {
+//     const inputC  = document.getElementsByTagName("input");
+//     for (i=0; i<inputC.length; i++) {
+//         if (inputC[i].type == "checkbox") {
+//             inputC[i].checked = false;
+//         }
+//     }
+// } )
 
 // edBtn.addEventListener("click", function(e) {
 //     e.preventDefault()
