@@ -82,7 +82,6 @@ selAll.addEventListener("click", () => {
 //     })
 // })
 
-{/* <label>${tasks[i]}</label> */}
 function display() {
     let listitems = '';
     for (let i=0; i<tasks.length; i++) {
@@ -90,7 +89,6 @@ function display() {
         <input type="checkbox"><input type="text" value="${tasks[i]} " readonly class="item">
         </div>`
     }
-            // <button class="edit" type='submit'>Edit</button>
     formEl.innerHTML = listitems;
 }
   
